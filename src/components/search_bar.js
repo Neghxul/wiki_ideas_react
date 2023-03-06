@@ -1,13 +1,24 @@
-import React from "react";
+import { React, useState, useRef } from "react";
 import { FaSearch } from 'react-icons/fa'
+import { newArticle } from "./new_topic";
+
+var imageUrlResult = './img/logo_empty.png';
+var titleResult = '';
+var descriptionResult = '';
 
 function SearchBar() {
-
+    const ref = useRef(null);
+    const [searchValue, setSearchValue] = useState("");
     const detailsDiv = document.getElementById('details-search'); // for details
     const resultsDiv = document.getElementById('search-img');
     const searchInput = document.getElementById('search-text');
     const containerDiv = document.getElementById('search-container');
-        
+
+    const changeValue = () => {
+        setSearchValue(ref.current.onChange)
+    };
+
+
     async function handleSubmit(event) {
         event.preventDefault();
         const searchValue = searchInput.value;
@@ -106,18 +117,18 @@ function SearchBar() {
     function displayDetails(pageData) {
         const page = pageData.query.pages[Object.keys(pageData.query.pages)[0]];
         console.log(page);
-        const imageUrl = page.thumbnail ? page.thumbnail.source : './img/logo_empty.png';
-        const title = page.title;
-        const description = page.extract;
+        imageUrlResult = page.thumbnail ? page.thumbnail.source : './img/logo_empty.png';
+        titleResult = page.title;
+        descriptionResult = page.extract;
         const details = `
-        <img src="${imageUrl}" alt="${title} id="details-img">
+        <img src="${imageUrlResult}" alt="${titleResult} id="details-img">
         <div id="details-txt">
-        <h3>${title}</h3>
-        <p>${description}</p>
+        <h3>${titleResult}</h3>
+        <p>${descriptionResult}</p>
+        <button id="addWiki" onClick={newArticle}>Agregar articulo</button>
         </div>
         `;
-    detailsDiv.innerHTML = details;
-    
+        detailsDiv.innerHTML = details;
     }
 
     return (
@@ -125,8 +136,8 @@ function SearchBar() {
         <section id="main-search">
             <h1 className="title">Buscar en enciclopedia</h1>
             <form id="search-form">
-                <input id="search-text" type="text" />
-                <button id="search-btn" onClick={handleSubmit}><i className="fas fa-searc"><FaSearch /></i></button>
+                <input id="search-text" type="text" ref={ref} value={searchValue} onChange={changeValue} />
+                <button id="search-btn" onClick={handleSubmit}><FaSearch className="react-icon" /></button>
             </form>
             <div id="search-container">
                 <div id="search-img">
@@ -134,10 +145,10 @@ function SearchBar() {
                 <div id="details-search">
 
                 </div>
+
             </div>
         </section>
     );
-
     
 }
 

@@ -18,12 +18,12 @@ function Footer() {
             </div>
         </div>
 
-        <div id="footer-media">
-            <i className="fa-brands fa-facebook"><FaFacebook /></i>
-            <i className="fa-brands fa-instagram"><FaInstagram /></i>
-            <i className="fa-brands fa-twitter"><FaTwitter /></i>
-            <i className="fa-brands fa-github"><FaGithub /></i>
-            <i className="fa-brands fa-whatsapp"><FaWhatsapp /></i>
+        <div id="footer-media" className="footer-media">
+            <FaFacebook className="react-icon" />
+            <FaInstagram className="react-icon" />
+            <FaTwitter className="react-icon" />
+            <FaGithub className="react-icon" />
+            <FaWhatsapp className="react-icon" />
         </div>
 
         <div id="footer-rights">

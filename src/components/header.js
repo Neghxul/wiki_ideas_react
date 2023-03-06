@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useRef } from 'react';
 import image from '../img/logo_empty.png';
 import ToolsMenu from './tools_menu';
 
@@ -16,7 +16,7 @@ function Header(){
                 <a href="#">Menu 2</a>
                 <a href="#">Menu 3</a>
                 <a href="#">Menu 4</a>
-                <a href="#">Menu 5</a>
+                <a href="#">About</a>
             </nav>
             <ToolsMenu />
         </header>

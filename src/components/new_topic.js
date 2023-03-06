@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import { useState } from "react";
-
+import { useState, useRef } from "react";
+import { imageUrlResult, descriptionResult, titleResult } from "./search_bar";
 
 function NewTopic() {
-
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [author, setAuthor] = useState("");
     const [imgThumb, setImgThumb] = useState("");
+    const ref = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null);
 
     const closeWindow = () => {
@@ -18,6 +19,7 @@ function NewTopic() {
     const handleContentClick = (event) => {
         event.stopPropagation();
     } 
+
 
         //if(newFile.files[0]){ 
         const fileUpload = (event) => {
@@ -38,11 +40,11 @@ function NewTopic() {
             <h1>Crear un nuevo articulo</h1>
             <form className="new-form">
                 <label htmlFor="new-name">Titulo</label>
-                <input type="text" id="new-name" name="new-name" onChange={title} />
+                <input type="text" id="new-name" name="new-name" ref={ref} onChange={(event) => setTitle(event.target.value)} value={title} />
                 <label htmlFor="new-content">Descripcion del articulo</label>
-                <textarea id="new-content" name="new-content" onChange={description}></textarea>
+                <textarea id="new-content" name="new-content" ref={ref} onChange={(event) => setDescription(event.target.value)} value={description}></textarea>
                 <label htmlFor="new-author">Autor</label>
-                <input type="text" id="new-author" name="new-author" onChange={author} />
+                <input type="text" id="new-author" name="new-author" ref={ref} onChange={(event) => setAuthor(event.target.value)} value={author} />
                 <img id="new-image-preview" src={imgThumb} />
                 <input type="file" id="new-image" name="new-image" onChange={fileUpload} />
                 <select>
@@ -61,6 +63,17 @@ function NewTopic() {
         <span className="close-button" onClick={closeWindow}>&times;</span>
     </div>
     );
+
+    
 }
 
+const newArticle = () => {
+    /*setTitle(titleResult);
+    setDescription(descriptionResult);
+    setImgThumb(imageUrlResult);*/
+}
+
+
+
 export default NewTopic;
+export { newArticle };

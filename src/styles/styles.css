@@ -125,9 +125,11 @@ a {
     padding: 10px 20px;
     font-size: 15px;
     transition: transform 0.6s ease;
+    display: flex;
+    justify-content: flex-start;
 }
 
-.menu-tools li i {
+.menu-tools li svg {
     margin-right: 25px;
     font-size: 15px;
 
@@ -193,7 +195,10 @@ a {
 #search-btn {
     height: 50px;
     border-radius: 0px 10px 10px 0px;
-    padding: 0 18px;
+    padding: 0 10px;
+}
+
+#search-btn .react-icon {
     font-size: 22px;
 }
 
@@ -260,7 +265,7 @@ a {
 
 #details-txt p {
     text-align: justify;
-    padding-right: 10px;
+    padding: 10px;
 }
 
 .result-item {
@@ -469,16 +474,16 @@ a {
 }
 
 
-#footer-media i {
+.react-icon {
     font-size: 30px;
     margin: 10px 20px;
-    transition: transform .5s ease;
+    transition: transform 0.6s ease;
 }
 
-#footer-media i:hover {
+.react-icon:hover {
     color: #eee;
-    transform: scale(1.30);
     cursor: pointer;
+    transform: scale(1.3);
 }
 
 #footer-rights {
@@ -599,10 +604,12 @@ a {
     font-weight: bold;
     color: #eee;
     cursor: pointer;
+    transition: transform 0.6s ease;
 }
 
 .close-button:hover {
     color:rgba(190, 190, 190, 0.8);
+    transform: scale(1.3);
 }
 
 
