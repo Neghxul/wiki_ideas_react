@@ -16,6 +16,8 @@ function App() {
       <Main />
       <Footer />
 
+      <NewTopic />
+
       
     </div>
   );

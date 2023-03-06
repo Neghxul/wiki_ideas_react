@@ -1,4 +1,5 @@
 import React from "react";
+import { FaFacebook, FaInstagram, FaTwitter, FaGithub, FaWhatsapp } from "react-icons/fa";
 
 function Footer() {
     return (
@@ -8,9 +9,9 @@ function Footer() {
             <div id="footer-about">
 
                 <div id="contact-form">
-                    <label for="contact-name">Your Name:</label>
+                    <label htmlFor="contact-name">Your Name:</label>
                     <input type="text" id="contact-name" name="contact-name" placeholder="Enter your name" required />
-                    <label for="contact-email">Your Email:</label>
+                    <label htmlFor="contact-email">Your Email:</label>
                     <input type="email" id="contact-email" name="contact-email" placeholder="Enter your email" required />
                     <button id="contact-btn">Contact</button>
                 </div>
@@ -18,11 +19,11 @@ function Footer() {
         </div>
 
         <div id="footer-media">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-github"></i>
-            <i class="fa-brands fa-whatsapp"></i>
+            <i className="fa-brands fa-facebook"><FaFacebook /></i>
+            <i className="fa-brands fa-instagram"><FaInstagram /></i>
+            <i className="fa-brands fa-twitter"><FaTwitter /></i>
+            <i className="fa-brands fa-github"><FaGithub /></i>
+            <i className="fa-brands fa-whatsapp"><FaWhatsapp /></i>
         </div>
 
         <div id="footer-rights">
