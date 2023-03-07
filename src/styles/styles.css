@@ -575,9 +575,16 @@ a {
     width: 70%;
     height: 330px;
     object-fit: cover;
-    display: none;
     margin-bottom: 20px;
     border-radius: 5px;
+}
+
+.inactive {
+    display: none;
+}
+
+.active {
+    display: inline-block;
 }
 
 .new-form button {

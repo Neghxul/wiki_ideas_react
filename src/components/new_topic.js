@@ -1,15 +1,14 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { useState, useRef } from "react";
-import { imageUrlResult, descriptionResult, titleResult } from "./search_bar";
+import SearchBar, { imageUrlResult, descriptionResult, titleResult } from "./search_bar";  //Change
 
 function NewTopic() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [author, setAuthor] = useState("");
-    const [imgThumb, setImgThumb] = useState("");
+    const [title, setTitle] = useState(titleResult);  // change
+    const [description, setDescription] = useState(descriptionResult); // change
+    const [author, setAuthor] = useState();
+    const [imgThumb, setImgThumb] = useState(imageUrlResult);  // change
     const ref = useRef(null);
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [imgShow, setImgShow] = useState("inactive");
 
     const closeWindow = () => {
         document.querySelector('.new-topic').style.display = 'none';
@@ -21,6 +20,7 @@ function NewTopic() {
     } 
 
 
+
         //if(newFile.files[0]){ 
         const fileUpload = (event) => {
             const newFile = event.target.files[0];
@@ -29,6 +29,7 @@ function NewTopic() {
             reader.onload = (event) => {
                 const fileContent = event.target.result;
                 setImgThumb(fileContent);
+                setImgShow('active');
             };
             reader.readAsDataURL(newFile);
         }
@@ -45,7 +46,7 @@ function NewTopic() {
                 <textarea id="new-content" name="new-content" ref={ref} onChange={(event) => setDescription(event.target.value)} value={description}></textarea>
                 <label htmlFor="new-author">Autor</label>
                 <input type="text" id="new-author" name="new-author" ref={ref} onChange={(event) => setAuthor(event.target.value)} value={author} />
-                <img id="new-image-preview" src={imgThumb} />
+                <img id="new-image-preview" className={imgShow} src={imgThumb} />
                 <input type="file" id="new-image" name="new-image" onChange={fileUpload} />
                 <select>
                     <option>Musica</option>
@@ -67,13 +68,4 @@ function NewTopic() {
     
 }
 
-const newArticle = () => {
-    /*setTitle(titleResult);
-    setDescription(descriptionResult);
-    setImgThumb(imageUrlResult);*/
-}
-
-
-
 export default NewTopic;
-export { newArticle };

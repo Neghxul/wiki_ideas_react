@@ -1,10 +1,7 @@
 import { React, useState, useRef } from "react";
 import { FaSearch } from 'react-icons/fa'
-import { newArticle } from "./new_topic";
+import Details from "./details";
 
-var imageUrlResult = './img/logo_empty.png';
-var titleResult = '';
-var descriptionResult = '';
 
 function SearchBar() {
     const ref = useRef(null);
@@ -14,10 +11,18 @@ function SearchBar() {
     const searchInput = document.getElementById('search-text');
     const containerDiv = document.getElementById('search-container');
 
-    const changeValue = () => {
-        setSearchValue(ref.current.onChange)
-    };
 
+    /* First try to pass images to new_topic */
+    const [imageUrlResult, setImageUrlResult] = useState("");
+    const [titleResult, setTitleResult] = useState("");
+    const [descriptionResult, setDescriptionResult] = useState("");
+
+    const handleResult = (imageUrl, title, description) => {
+        setImageUrlResult(imageUrl);
+        setTitleResult(title);
+        setDescriptionResult(description);
+    }; 
+    //end try
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -66,7 +71,6 @@ function SearchBar() {
     function displayResults(results) {
         results.query.search.forEach(result => {
             const url = `https://en.wikipedia.org/?curid=${result.pageid}`;
-
             const resultItem = document.createElement('div');
                 resultItem.classList.add('result-item');
                 resultItem.onclick = function () { resultClick(result.pageid); };
@@ -117,15 +121,14 @@ function SearchBar() {
     function displayDetails(pageData) {
         const page = pageData.query.pages[Object.keys(pageData.query.pages)[0]];
         console.log(page);
-        imageUrlResult = page.thumbnail ? page.thumbnail.source : './img/logo_empty.png';
-        titleResult = page.title;
-        descriptionResult = page.extract;
+        const imageUrlResult = page.thumbnail ? page.thumbnail.source : './img/logo_empty.png';
+        const titleResult = page.title;
+        const descriptionResult = page.extract;
         const details = `
         <img src="${imageUrlResult}" alt="${titleResult} id="details-img">
         <div id="details-txt">
         <h3>${titleResult}</h3>
         <p>${descriptionResult}</p>
-        <button id="addWiki" onClick={newArticle}>Agregar articulo</button>
         </div>
         `;
         detailsDiv.innerHTML = details;
@@ -136,20 +139,25 @@ function SearchBar() {
         <section id="main-search">
             <h1 className="title">Buscar en enciclopedia</h1>
             <form id="search-form">
-                <input id="search-text" type="text" ref={ref} value={searchValue} onChange={changeValue} />
+                <input id="search-text" type="text" ref={ref} value={searchValue} onChange={(event) => setSearchValue(event.target.value)} />
                 <button id="search-btn" onClick={handleSubmit}><FaSearch className="react-icon" /></button>
             </form>
             <div id="search-container">
                 <div id="search-img">
                 </div>
                 <div id="details-search">
-
+                
                 </div>
+                <Details />
 
             </div>
         </section>
     );
     
 }
-
+// Try 1st
+export let imageUrlResult = "";
+export let titleResult = "";
+export let descriptionResult = "";
+// End Try
 export default SearchBar;
