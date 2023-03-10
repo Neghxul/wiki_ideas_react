@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useRef } from "react";
-import SearchBar, { imageUrlResult, descriptionResult, titleResult } from "./search_bar";  //Change
+
 
 function NewTopic() {
-    const [title, setTitle] = useState(titleResult);  // change
-    const [description, setDescription] = useState(descriptionResult); // change
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
     const [author, setAuthor] = useState();
-    const [imgThumb, setImgThumb] = useState(imageUrlResult);  // change
+    const [imgThumb, setImgThumb] = useState("");
     const ref = useRef(null);
     const [imgShow, setImgShow] = useState("inactive");
 
@@ -19,9 +19,6 @@ function NewTopic() {
         event.stopPropagation();
     } 
 
-
-
-        //if(newFile.files[0]){ 
         const fileUpload = (event) => {
             const newFile = event.target.files[0];
             const reader = new FileReader();
@@ -64,8 +61,6 @@ function NewTopic() {
         <span className="close-button" onClick={closeWindow}>&times;</span>
     </div>
     );
-
-    
 }
 
 export default NewTopic;

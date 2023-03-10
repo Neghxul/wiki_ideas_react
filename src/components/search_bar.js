@@ -6,30 +6,17 @@ import Details from "./details";
 function SearchBar() {
     const ref = useRef(null);
     const [searchValue, setSearchValue] = useState("");
-    const detailsDiv = document.getElementById('details-search'); // for details
+    const detailsDiv = document.getElementById('details-search'); 
     const resultsDiv = document.getElementById('search-img');
     const searchInput = document.getElementById('search-text');
     const containerDiv = document.getElementById('search-container');
-
-
-    /* First try to pass images to new_topic */
-    const [imageUrlResult, setImageUrlResult] = useState("");
-    const [titleResult, setTitleResult] = useState("");
-    const [descriptionResult, setDescriptionResult] = useState("");
-
-    const handleResult = (imageUrl, title, description) => {
-        setImageUrlResult(imageUrl);
-        setTitleResult(title);
-        setDescriptionResult(description);
-    }; 
-    //end try
 
     async function handleSubmit(event) {
         event.preventDefault();
         const searchValue = searchInput.value;
         const searchQuery = searchValue.trim();
         resultsDiv.innerHTML = "";
-        detailsDiv.innerHTML = ""; // new
+        detailsDiv.innerHTML = "";
         
         console.log(searchQuery);
     
@@ -92,19 +79,6 @@ function SearchBar() {
                 snippet.innerHTML = result.snippet;
                 resultItem.appendChild(snippet);
                 resultsDiv.appendChild(resultItem);
-                
-            /*resultItem.addEventListener('click', async () => {
-                try {
-                    const pageData = await getPageData(result.pageid);
-                    displayDetails(pageData);
-                } catch (err) {
-                    console.log(err);
-                    alert('Failed to retrieve page data');
-                }
-            });*/
-
-        
-
         });
     }
     
@@ -155,9 +129,5 @@ function SearchBar() {
     );
     
 }
-// Try 1st
-export let imageUrlResult = "";
-export let titleResult = "";
-export let descriptionResult = "";
-// End Try
+
 export default SearchBar;
