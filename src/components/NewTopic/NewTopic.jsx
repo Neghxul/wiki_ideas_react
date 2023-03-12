@@ -1,5 +1,7 @@
+import './newTopicStyles.css';
 import React from "react";
 import { useState, useRef } from "react";
+import ToolsMenu from "../ToolsMenu/ToolsMenu";
 
 
 function NewTopic() {

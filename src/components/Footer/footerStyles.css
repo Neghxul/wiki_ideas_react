@@ -1,0 +1,80 @@
+#footer {
+    width: 100%;
+    background: #ffd871;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#footer-flex {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#footer-about {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#contact-form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0px;
+}
+
+#contact-form input, #contact-form label {
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-size: 14px;
+}
+
+#contact-form button {
+    width: 120px;
+    padding: 5px;
+    background: #000;
+    color: #eee;
+    margin-top: 20px;
+    border-radius: 10px;
+    align-self: center;
+}
+
+#contact-form button:hover {
+    font-weight: bold;
+    background: #eee;
+    color:#000;
+    cursor: pointer;
+}
+
+
+.react-icon {
+    font-size: 30px;
+    margin: 10px 20px;
+    transition: transform 0.6s ease;
+}
+
+.react-icon:hover {
+    color: #eee;
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+#footer-rights {
+    width: 90%;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 0;
+    margin-top: 10px;
+    border-top: 2px solid rgba(122,122,122,0.5);
+    
+}

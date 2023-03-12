@@ -1,0 +1,121 @@
+.new-topic {
+    display: none; /* change for show and hide */
+    position: fixed;
+    z-index: 5000;
+    left: 0;
+    top: 0;
+    padding-top: 45px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.new-topic-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+    height: 90%;
+    background-color: rgb(200, 200, 200);
+    overflow-y: scroll;
+}
+
+.new-topic-content h1 {
+    margin: 50px 0;
+}
+
+.new-form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-form input {
+    margin-bottom: 20px;
+    width: calc(70% - 18px);
+    height: 35px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.new-form select {
+    margin-bottom: 20px;
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.new-form label {
+    width: 70%;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.new-form textarea {
+    width: calc(70% - 20px);
+    height:300px;
+    overflow-y: scroll;
+    resize: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.new-form #new-image {
+    display: inline-block;
+    border-radius: 5px;
+}
+    
+
+.new-form #new-image-preview {
+    width: 70%;
+    height: 330px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.inactive {
+    display: none;
+}
+
+.active {
+    display: inline-block;
+}
+
+.new-form button {
+    width: 200px;
+    height: 35px;
+    margin: 50px 0;
+    border-radius: 5px;
+    border: 1px solid rgba(190, 190, 190, 0.8);
+    transition: transform 0.6s ease;
+}
+
+.new-form button:hover {
+    background: #7b6936;
+    color: #eee;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #eee;
+    cursor: pointer;
+    transition: transform 0.6s ease;
+}
+
+.close-button:hover {
+    color:rgba(190, 190, 190, 0.8);
+    transform: scale(1.3);
+}

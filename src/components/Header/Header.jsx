@@ -1,6 +1,7 @@
+import './headerStyles.css';
 import { React, useRef } from 'react';
 import image from '../img/logo_empty.png';
-import ToolsMenu from './tools_menu';
+import ToolsMenu from '../ToolsMenu/ToolsMenu';
 
 
 

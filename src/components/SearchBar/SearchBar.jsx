@@ -1,7 +1,10 @@
+import './searchBarStyles.css';
 import { React, useState, useRef } from "react";
 import { FaSearch } from 'react-icons/fa'
-import Details from "./details";
+import Details from "../Details/Details";
 
+
+var dataSave = [];
 
 function SearchBar() {
     const ref = useRef(null);
@@ -94,6 +97,7 @@ function SearchBar() {
     
     function displayDetails(pageData) {
         const page = pageData.query.pages[Object.keys(pageData.query.pages)[0]];
+        dataSave = page;
         console.log(page);
         const imageUrlResult = page.thumbnail ? page.thumbnail.source : './img/logo_empty.png';
         const titleResult = page.title;
@@ -130,4 +134,5 @@ function SearchBar() {
     
 }
 
+export { dataSave };
 export default SearchBar;

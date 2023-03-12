@@ -1,0 +1,38 @@
+#main-principal {
+    width: 100%;
+    background: rgb(200, 200, 200);
+    border: 1px solid transparent;
+}
+
+#principal-grid {
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.principal-section {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(122,122,122,0.8),
+                4px 5px 10px;
+}
+
+.principal-img {
+    width: 60%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.principal-text {
+    width: 40%;
+    height: 100%;
+    overflow: auto;
+}

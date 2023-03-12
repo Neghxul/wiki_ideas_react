@@ -1,3 +1,4 @@
+import './footerStyles.css';
 import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter, FaGithub, FaWhatsapp } from "react-icons/fa";
 

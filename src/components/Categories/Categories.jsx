@@ -1,6 +1,50 @@
+import './categoriesStyles.css';
 import React, { useEffect, useState } from "react";
+import img1 from '../img/deportes.jpg';
+import img2 from '../img/educacion.jfif';
+import img3 from '../img/entretenimiento.jpg';
+import img4 from '../img/musica.jpg';
+import img5 from '../img/politica.jfif';
+import img6 from '../img/religion.jpg';
+
+const categories = [
+    { 
+        nombre: "Deportes",
+        img: img1
+    }, 
+    { 
+        nombre: "Educación",
+        img: img2
+    }, 
+    { 
+        nombre: "Entretenimiento",
+        img: img3
+    }, 
+    { 
+        nombre: "Musica",
+        img: img4
+    }, 
+    { 
+        nombre: "Politica",
+        img: img5
+    }, 
+    { 
+        nombre: "Religión",
+        img: img6
+    }
+];
 
 function Categories() {
+
+    const createCategories = categories.map((cat, index) => {
+        return (
+            <div className="category" key={index}>
+                <h3 className="subtitle">{cat.nombre}</h3><hr />
+                    <img src={cat.img} alt={cat.nombre} />
+            </div>
+        );
+    });
+
     const [subValue, setSubValue] = useState("");
 
     useEffect(() => {
@@ -37,8 +81,8 @@ function Categories() {
                 searchBar.style.background = "#aaa";
             } else {
                 searchBar.style.background = "#fff";
-        }
-    };
+            }
+        };
 
     subCategories.forEach((subtitle, index) => {
         subtitle.setAttribute('data-index', index);
@@ -56,7 +100,6 @@ function Categories() {
         toolsMenu.classList.remove('active');
     });
 
-    // Cleanup function
     return () => {
         subCategories.forEach((subtitle, index) => {
         subtitle.removeEventListener('mouseover', handleSubtitleMouseOver);
@@ -70,43 +113,10 @@ function Categories() {
 return (
         <section id="main-category">
             <h1 className="title">Categorias</h1>
-            <div id="category-grid">
-                <div className="category b1">
-                    <h3 className="subtitle">Deportes</h3><hr />
-                    <img src="./img/deportes.jpg" alt="" />
-
-                </div>
-
-                <div className="category b2">
-                    <h3 className="subtitle">Politica</h3><hr />
-                    <img src="./img/politica.jfif" alt="" />
-                </div>
-
-                <div className="category b3">
-                    <h3 className="subtitle">Religion</h3><hr />
-                    <img src="./img/religion.jpg" alt="" />
-                </div>
-
-                <div className="category b4">
-                    <h3 className="subtitle">Educación</h3><hr />
-                    <img src="./img/educacion.jfif" alt="" />
-                </div>
-
-                <div className="category b5">
-                    <h3 className="subtitle">Entretenimiento</h3><hr />
-                    <img src="./img/entretenimiento.jpg" alt="" />
-                </div>
-
-                <div className="category b6">
-                    <h3 className="subtitle">Musica</h3><hr />
-                    <img src="./img/musica.jpg" alt="" />
-                </div>
-
-            </div>
-
+            <div id="category-grid">{createCategories}</div>
         </section>
     );
 
-}
+};
 
 export default Categories;
