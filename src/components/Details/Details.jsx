@@ -1,10 +1,9 @@
 import React from "react";
 import img1 from '../img/destacado_1.png';
 import img2 from '../img/destacado_2.jpg';
-import MainTopic from "../MainTopics/MainTopics";
 import { dataSave } from "../SearchBar/SearchBar";
 
-var mainTopic = [
+const mainTopic = [
     {
         img: img1,
         title: 'ABBA',
@@ -28,12 +27,11 @@ function Details ( ) {
             desc1: dataSave.extract
         };
         mainTopic.push(newData); 
-        <MainTopic />
 
     };
 
     return (
-        <button onClick={handleButtonClick}>Agragar Articulo</button>
+        <button onClick={handleButtonClick}>Agrear Articulo</button>
     );
 }
 
