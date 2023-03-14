@@ -3,12 +3,14 @@ import { Outlet } from "react-router-dom";
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import NewTopic from '../NewTopic/NewTopic';
+import Registration from "../Registration/Registration";
 
 function Root () {
     return (
         <>
             <Header />
             <Outlet />
+            <Registration />
             <Footer />
             <NewTopic />
         </>
