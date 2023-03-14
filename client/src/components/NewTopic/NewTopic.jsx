@@ -2,11 +2,12 @@ import './newTopicStyles.css';
 import React from "react";
 import { useState, useRef } from "react";
 import ToolsMenu from "../ToolsMenu/ToolsMenu";
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function NewTopic() {
     const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [value, setValue] = useState("");
     const [author, setAuthor] = useState();
     const [imgThumb, setImgThumb] = useState("");
     const ref = useRef(null);
@@ -41,8 +42,10 @@ function NewTopic() {
             <form className="new-form">
                 <label htmlFor="new-name">Titulo</label>
                 <input type="text" id="new-name" name="new-name" ref={ref} onChange={(event) => setTitle(event.target.value)} value={title} />
-                <label htmlFor="new-content">Descripcion del articulo</label>
-                <textarea id="new-content" name="new-content" ref={ref} onChange={(event) => setDescription(event.target.value)} value={description}></textarea>
+                <label>Descripcion del articulo</label>
+                <div className="editorcontainer">
+                    <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} />
+                </div>
                 <label htmlFor="new-author">Autor</label>
                 <input type="text" id="new-author" name="new-author" ref={ref} onChange={(event) => setAuthor(event.target.value)} value={author} />
                 <img id="new-image-preview" className={imgShow} src={imgThumb} />
