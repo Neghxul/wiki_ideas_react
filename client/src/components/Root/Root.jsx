@@ -10,9 +10,7 @@ function Root () {
         <>
             <Header />
             <Outlet />
-            <Registration />
             <Footer />
-            <NewTopic />
         </>
     )
 }

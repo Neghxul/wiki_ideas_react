@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Golos+Text&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Golos+Text&display=swap');
 
+:root {
+    --black: #06070E;
+    --brunswickgreen: #29524A;
+    --cambridgeblue: #94A187;
+    --khaki: #C5AFA0;
+    --tearose: #E9BCB7;
+}
+
 * {
     padding: 0;
     margin: 0;

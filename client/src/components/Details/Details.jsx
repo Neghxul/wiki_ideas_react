@@ -3,7 +3,7 @@ import img1 from '../img/destacado_1.png';
 import img2 from '../img/destacado_2.jpg';
 import { dataSave } from "../SearchBar/SearchBar";
 
-const mainTopic = [
+/*const mainTopic = [
     {
         img: img1,
         title: 'ABBA',
@@ -16,7 +16,7 @@ const mainTopic = [
         desc1: 'Fuji rojo —también conocida según su nombre original (凱風快晴 Gaifū kaisei?), en español Viento del sur, cielo claro— es una estampa japonesa del pintor especialista en ukiyo-e, Katsushika Hokusai, que forma parte de la serie Treinta y seis vistas del monte Fuji.',
         desc2: 'weiFue publicada entre 1829 y 1833, durante el Período Edo, y actualmente es propiedad de varios museos, incluyendo el Museo Británico en Londres, el Museo Metropolitano de Arte de Nueva York, y el Museo de Arte de Indianápolis.'
     }
-];
+]
 
 
 function Details ( ) {
@@ -35,5 +35,4 @@ function Details ( ) {
     );
 }
 
-export {mainTopic};
-export default Details;
+export default Details;*/

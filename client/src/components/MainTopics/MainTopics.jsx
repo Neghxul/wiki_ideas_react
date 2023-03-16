@@ -1,17 +1,41 @@
 import './mainTopicsStyles.css';
-import React, { useState } from "react";
-import { mainTopic } from '../Details/Details';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link, useLocation } from "react-router-dom";
 
 
 function MainTopic () {
 
-    const mainTopicGenerate = mainTopic.map((topic, index) => {
+    const [posts, setPosts] = useState([]);
+
+    const category = useLocation().search;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axios.get(`/posts${category}`);
+                setPosts(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        fetchData();
+    },[category]);
+
+    const getText = (html) => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        return doc.body.textContent;
+    };
+
+    const mainTopicGenerate = posts.map((post) => {
         return (
-            <div className="principal-section" key={index}>
-                    <img className="principal-img" src={topic.img} alt={topic.img} />
+            <div className="principal-section" key={post.id}>
+                    <img className="principal-img" src={post.img} alt="" />
                     <div className="principal-text">
-                        <p>{topic.desc1}</p>
-                        <p>{topic.desc2}</p>
+                        <Link className="link" to={`/post/${post.id}`}>
+                            <h1>{post.title}</h1>
+                        </Link>
+                        <p>{getText(post.desc)}</p>
                     </div>
                 </div>
         );

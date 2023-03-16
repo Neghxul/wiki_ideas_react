@@ -1,7 +1,10 @@
 import './searchBarStyles.css';
 import { React, useState, useRef } from "react";
-import { FaSearch } from 'react-icons/fa'
-import Details from "../Details/Details";
+import { FaSearch } from 'react-icons/fa';
+import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment';
+import logo from "../img/logo_empty.png";
 
 
 var dataSave = [];
@@ -98,12 +101,12 @@ function SearchBar() {
     function displayDetails(pageData) {
         const page = pageData.query.pages[Object.keys(pageData.query.pages)[0]];
         dataSave = page;
-        console.log(page);
-        const imageUrlResult = page.thumbnail ? page.thumbnail.source : './img/logo_empty.png';
+        console.log(dataSave);
+        const imageUrlResult = page.thumbnail ? page.thumbnail.source : logo;
         const titleResult = page.title;
         const descriptionResult = page.extract;
         const details = `
-        <img src="${imageUrlResult}" alt="${titleResult} id="details-img">
+        <img src="${imageUrlResult}" alt="${titleResult}" id="details-img">
         <div id="details-txt">
         <h3>${titleResult}</h3>
         <p>${descriptionResult}</p>
@@ -111,6 +114,82 @@ function SearchBar() {
         `;
         detailsDiv.innerHTML = details;
     }
+
+
+    // Function for save data in the DB
+
+    const navigate = useNavigate();
+    const state = useLocation().state;
+    
+
+    const handleSavePost = async (e) => {
+        e.preventDefault();
+        console.log(dataSave);
+
+        try {
+            state 
+            ? await axios.put(`/posts/${state.id}`, {
+                title: dataSave.title,
+                desc: dataSave.extract,
+                category: "",
+                img: dataSave.thumbnail ? dataSave.thumbnail.source : logo,
+            }) : 
+            await axios.post(`/posts/`, {
+                title: dataSave.title,
+                desc: dataSave.extract,
+                category: "",
+                img: dataSave.thumbnail ? dataSave.thumbnail.source : logo,
+                date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            });
+           navigate("/inicio");
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    /*const state = useLocation().state;
+    const [value, setValue] = useState(state?.title || "");
+    const [title, setTitle] = useState(state?.desc || "");
+    const [file, setFile] = useState(null);
+    const [cat, setCat] = useState(state?.cat || "");
+
+    
+
+    const upload = async() => {
+        try{
+            const formData = new FormData();
+            formData.append("file", file);
+            const res = await axios.post("/upload", formData);
+            return res.data;
+        }catch(err) {
+            console.log(err);
+        }
+    }
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        const imgUrl = await upload();
+
+        try {
+            state
+                ? await axios.put(`/posts/${state.id}`, {
+                title,
+                desc: value,
+                cat,
+                img: file ? imgUrl : "",
+            }) :
+            await axios.post(`/posts/`, {
+                title,
+                desc: value,
+                cat,
+                img: file ? imgUrl : "",
+                date: moment(Date.now()).format("YYY-MM-DD HH:mm:ss"),
+            });
+            navigate("/");
+        } catch (err) {
+            console.log(err);
+        }
+    };*/
 
     return (
         
@@ -126,7 +205,7 @@ function SearchBar() {
                 <div id="details-search">
                 
                 </div>
-                <Details />
+                <button onClick={handleSavePost}>Guardar</button>
 
             </div>
         </section>
