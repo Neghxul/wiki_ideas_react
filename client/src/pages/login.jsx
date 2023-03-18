@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../components/context/authContext";
 
 
 const Login = () => {
@@ -40,8 +39,8 @@ return (
             <label htmlFor="password">Password:</label>
             <input type="password" name="password" onChange={handleChange} />
             {err &&<p>{err}</p>}
-            <button onClick={handleSubmit}>Registrar</button>
-            <p>¿Tienes una cuenta? Login</p>
+            <button onClick={handleSubmit}>Ingresar</button>
+            <p>¿No tienes cuenta? <Link className="link" to={"/register"}>Registrate</Link></p>
         </form>
     </div>
 );

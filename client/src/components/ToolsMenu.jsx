@@ -1,8 +1,7 @@
-import './toolsMenuStyles.css';
 import React, { useContext } from "react";
 import { useState } from "react";
 import { FaBars, FaPlus, FaEdit, FaTrash, FaFlag } from 'react-icons/fa';
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from './context/authContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 
@@ -47,7 +46,10 @@ function ToolsMenu() {
         <div id="header-tools">
                 <i onMouseOver={toolsBtnOver} className="fas fa-bars"><FaBars /></i>
                 <ul onMouseLeave={toolsBtnLeave} id="menu-tools" className={toolsValue}>
-                    <li>{currentUser?.username}</li>
+                    <li>
+                        <div className="avatar-container position"></div>
+                        <span>{currentUser?.username}</span>
+                    </li>
                     <li onClick={actionClick}><FaPlus />Nuevo Topic</li>
                     <li onClick={actionClick}><FaEdit />Edit</li>
                     <li onClick={actionClick}><FaTrash />Delete</li>

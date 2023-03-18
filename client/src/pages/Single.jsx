@@ -4,6 +4,8 @@ import axios from "axios";
 import moment from "moment";
 import { AuthContext } from "../components/context/authContext";
 import "./single.css";
+import { FaEdit, FaDelete } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 
 
 const Single = () => {
@@ -20,9 +22,8 @@ const Single = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log("postId: " + postId);
                 const res = await axios.get(`/posts/${postId}`);
-                setPost(res.data);
+                setPost(res.data);  
             } catch (err) {
                 console.log(err);
             }
@@ -40,24 +41,28 @@ const Single = () => {
     };
 
     return (
-        <div className="single">
-            <div className="content">
-                <img src={post?.img} alt="" />
-                <div className="user">
-                    <img src="" alt="" />
-                    <div className="info">
-                        <span>{post.username}</span>
-                        <p>Posted {moment(post.date).fromNow()}</p>
+        <div className="single-post">
+            <div className="content-single">
+                <h1>{ post.title }</h1>
+                <img src={post.img} alt={post.title} />
+                <p className="description-p">{ post.desc }</p>
+                <Link className="url-wiki" to={post.site}>Visita Wikipedia para mas información del articulo</Link>
+                <div className="user-single">
+                    <div className="info-single">
+                        <div className="user-info">
+                            <div className="avatar-container a1" ></div>
+                            <span>{post.username}</span>
+                        </div>
+                        <p className="posted-p">Posted {moment(post.date).fromNow()}</p>
+                        
                     </div>
-                    {currentUser.username === post.username && (
+                    {currentUser && currentUser.username === post.username && (
                     <div className="edit">
-                        <Link><span>Edit</span></Link>
-                        <Link onClick={handleDelete}><span>delete</span></Link>
+                        <Link className="link"><FaEdit className="icon-edit" />Editar</Link>
+                        <Link className="link" onClick={handleDelete}><MdDeleteForever className="icon-edit" />Borrar</Link>
                     </div>
                     )}
                 </div>
-                <h1>{ post.title }</h1>
-                <p>{ post.desc }</p>
             </div>
         </div>
     );

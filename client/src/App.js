@@ -1,7 +1,8 @@
 
-import './App.css';
+import './styles/App.scss';
 import Routers from './components/Routes/Routes';
 import './styles/styles.css';
+import './styles/style.scss';
 
 
 

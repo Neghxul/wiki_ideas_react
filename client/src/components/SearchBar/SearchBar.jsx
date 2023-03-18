@@ -133,6 +133,7 @@ function SearchBar() {
                 desc: dataSave.extract,
                 category: "",
                 img: dataSave.thumbnail ? dataSave.thumbnail.source : logo,
+                site: `https://en.wikipedia.org/?curid=${dataSave.pageid}`,
             }) : 
             await axios.post(`/posts/`, {
                 title: dataSave.title,
@@ -140,12 +141,14 @@ function SearchBar() {
                 category: "",
                 img: dataSave.thumbnail ? dataSave.thumbnail.source : logo,
                 date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+                site: `https://en.wikipedia.org/?curid=${dataSave.pageid}`,
             });
-           navigate("/inicio");
+           navigate("/");
         } catch (err) {
             console.log(err);
         }
     }
+
 
     /*const state = useLocation().state;
     const [value, setValue] = useState(state?.title || "");
@@ -196,8 +199,17 @@ function SearchBar() {
         <section id="main-search">
             <h1 className="title">Buscar en enciclopedia</h1>
             <form id="search-form">
-                <input id="search-text" type="text" ref={ref} value={searchValue} onChange={(event) => setSearchValue(event.target.value)} />
-                <button id="search-btn" onClick={handleSubmit}><FaSearch className="react-icon" /></button>
+                <div className="search-container">
+                    <input id="search-text" type="text" ref={ref} value={searchValue} onChange={(event) => setSearchValue(event.target.value)} />
+                    <button id="search-btn" onClick={handleSubmit}><FaSearch className="react-icon" /></button>
+                </div>
+                
+                <div className="search-option">
+                    <h5>¿Donde quieres realizar tu busqueda?</h5>
+                    <span><input type="radio" name="search-option" id="search-wiki" />Wikipedia</span>
+                    <span><input type="radio" name="search-option" id="search-db" />Wiki Ideas</span>
+                </div>
+                
             </form>
             <div id="search-container">
                 <div id="search-img">

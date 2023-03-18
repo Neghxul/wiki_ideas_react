@@ -2,11 +2,11 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "../Root/Root";
 import Main from "../../pages/Main";
-import Registration from "../Registration/Registration";
-import Login from "../Login/login";
+import Registration from "../../pages/Registration";
+import Login from "../../pages/login";
 import Single from "../../pages/Single"
 import Write from "../../pages/Write";
-import NewTopic from "../NewTopic/NewTopic";
+import NewTopic from "../../pages/NewTopic";
 
 
 const router = createBrowserRouter([
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
             },
 
             {
-                path: '/auth/register',
+                path: '/register',
                 element: <Registration />
             },
 
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
                 element: <Single />
             },
 
-            {
+            {       
                 path: '/write',
                 element: <NewTopic />
             }

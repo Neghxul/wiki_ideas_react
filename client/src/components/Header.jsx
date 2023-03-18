@@ -1,7 +1,7 @@
-import './headerStyles.css';
+
 import { React, useRef } from 'react';
-import image from '../img/logo_empty.png';
-import ToolsMenu from '../ToolsMenu/ToolsMenu';
+import image from './img/logo_empty.png';
+import ToolsMenu from './ToolsMenu';
 import { Link } from "react-router-dom";
 
 
@@ -15,11 +15,11 @@ function Header(){
                 </Link>
             </div>
             <nav id="header-navbar">
-                <a href="#">Menu 1</a>
-                <a href="#">Menu 2</a>
-                <a href="#">Menu 3</a>
-                <a href="#">Menu 4</a>
-                <a href="#">About</a>
+                <Link className="link">Menu</Link>
+                <Link className="link">Menu</Link>
+                <Link className="link">Menu</Link>
+                <Link className="link">Menu</Link>
+                <Link className="link">About</Link>
             </nav>
             <ToolsMenu />
         </header>

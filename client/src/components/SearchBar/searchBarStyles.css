@@ -17,9 +17,18 @@
 #search-form {
     width: 1000px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
+}
+
+.search-container {
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 #search-text {
@@ -52,6 +61,25 @@
     font-weight: bold;
     background: #ffd871;
     cursor: pointer;
+}
+
+.search-option {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 24px;
+}
+
+.search-option h5 {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#search-wiki, #search-db {
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    margin-bottom: 10px;
 }
 
 #search-container {

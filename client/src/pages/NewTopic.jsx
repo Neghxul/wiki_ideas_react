@@ -1,7 +1,7 @@
 import './newTopicStyles.css';
 import React from "react";
 import { useState, useRef } from "react";
-import ToolsMenu from "../ToolsMenu/ToolsMenu";
+import ToolsMenu from "../components/ToolsMenu";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 

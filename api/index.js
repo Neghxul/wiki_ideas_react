@@ -10,33 +10,6 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-/* Save and download file
-const http = require('http');
-const https = require('https');
-const fs = require('fs');
-
-const imageUrl = 'https://example.com/image.jpg';
-
-const fileName = Date.now() + imageUrl.substring(imageUrl.lastIndexOf('/')+1);
-
-// Make a request to the image URL
-const request = https.get(imageUrl, function(response) {
-  // Create a write stream to save the image
-  const file = fs.createWriteStream(`../client/public/upload/${fileName}`);
-  response.pipe(file);
-  // Respond with the filename once the image is saved
-  file.on('finish', function() {
-    file.close();
-    res.status(200).json(fileName);
-  });
-}).on('error', function(err) {
-  fs.unlink(`../client/public/upload/${fileName}`, function() {
-    console.error(err);
-    res.status(500).send("Failed to save image");
-  });
-});*/
-
-
 const storage = multer.diskStorage ({
     destination: function (req, file, cb) {
         cb(null,"../client/public/upload");

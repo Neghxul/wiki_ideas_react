@@ -1,5 +1,6 @@
 import './categoriesStyles.css';
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import img1 from '../img/deportes.jpg';
 import img2 from '../img/educacion.jfif';
 import img3 from '../img/entretenimiento.jpg';
@@ -39,7 +40,9 @@ function Categories() {
     const createCategories = categories.map((cat, index) => {
         return (
             <div className="category" key={index}>
+                
                 <h3 className="subtitle">{cat.nombre}</h3><hr />
+                
                     <img src={cat.img} alt={cat.nombre} />
             </div>
         );
