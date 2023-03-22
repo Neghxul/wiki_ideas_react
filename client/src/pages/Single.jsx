@@ -58,7 +58,7 @@ const Single = () => {
                     </div>
                     {currentUser && currentUser.username === post.username && (
                     <div className="edit">
-                        <Link className="link"><FaEdit className="icon-edit" />Editar</Link>
+                        <Link className="link" to={`/write?edit=2`} state={post}><FaEdit className="icon-edit" />Editar</Link>
                         <Link className="link" onClick={handleDelete}><MdDeleteForever className="icon-edit" />Borrar</Link>
                     </div>
                     )}

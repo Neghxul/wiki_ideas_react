@@ -15,9 +15,9 @@ function Header(){
                 </Link>
             </div>
             <nav id="header-navbar">
-                <Link className="link">Menu</Link>
-                <Link className="link">Menu</Link>
-                <Link className="link">Menu</Link>
+                <Link className="link" to={"/"}>Inicio</Link>
+                <Link className="link">Categorias</Link>
+                <Link className="link" to={"/write"}>Nuevo Post</Link>
                 <Link className="link">Menu</Link>
                 <Link className="link">About</Link>
             </nav>

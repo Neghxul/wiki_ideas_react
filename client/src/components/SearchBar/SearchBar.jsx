@@ -25,6 +25,7 @@ function SearchBar() {
         detailsDiv.innerHTML = "";
         
         console.log(searchQuery);
+
     
         try {
             const results = await searchWikipedia(searchQuery);
@@ -143,7 +144,7 @@ function SearchBar() {
                 date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
                 site: `https://en.wikipedia.org/?curid=${dataSave.pageid}`,
             });
-           navigate("/");
+           navigate("/inicio");
         } catch (err) {
             console.log(err);
         }
@@ -158,16 +159,7 @@ function SearchBar() {
 
     
 
-    const upload = async() => {
-        try{
-            const formData = new FormData();
-            formData.append("file", file);
-            const res = await axios.post("/upload", formData);
-            return res.data;
-        }catch(err) {
-            console.log(err);
-        }
-    }
+    
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -206,7 +198,7 @@ function SearchBar() {
                 
                 <div className="search-option">
                     <h5>¿Donde quieres realizar tu busqueda?</h5>
-                    <span><input type="radio" name="search-option" id="search-wiki" />Wikipedia</span>
+                    <span><input type="radio" name="search-option" id="search-wiki" checked />Wikipedia</span>
                     <span><input type="radio" name="search-option" id="search-db" />Wiki Ideas</span>
                 </div>
                 

@@ -4,11 +4,17 @@ import { useState, useRef } from "react";
 import ToolsMenu from "../components/ToolsMenu";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 function NewTopic() {
-    const [title, setTitle] = useState("");
-    const [value, setValue] = useState("");
-    const [author, setAuthor] = useState();
+
+    const state = useLocation().state;
+    const [title, setTitle] = useState(state?.title || "");
+    const [value, setValue] = useState(state?.desc || "");
+    const [cat, setCat] = useState(state?.cat || "");
+    const [author, setAuthor] = useState("");
+    const [file, setFile] = useState(null);
     const [imgThumb, setImgThumb] = useState("");
     const ref = useRef(null);
     const [imgShow, setImgShow] = useState("inactive");
@@ -22,9 +28,10 @@ function NewTopic() {
         event.stopPropagation();
     } 
 
-        const fileUpload = (event) => {
+        const fileShowPreview = (event) => {
             const newFile = event.target.files[0];
             const reader = new FileReader();
+            setFile(event.target.files[0]);
             
             reader.onload = (event) => {
                 const fileContent = event.target.result;
@@ -33,6 +40,29 @@ function NewTopic() {
             };
             reader.readAsDataURL(newFile);
         }
+
+        const upload = async() => {
+            try{
+                const formData = new FormData();
+                formData.append("file", file);
+                const res = await axios.post("/upload", formData);
+                //fileShowPreview();
+                return res.data;
+            }catch(err) {
+                console.log(err);
+            }
+        }
+    
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const imgUrl = upload();
+
+        try {
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
 
     return(
@@ -49,16 +79,16 @@ function NewTopic() {
                 <label htmlFor="new-author">Autor</label>
                 <input type="text" id="new-author" name="new-author" ref={ref} onChange={(event) => setAuthor(event.target.value)} value={author} />
                 <img id="new-image-preview" className={imgShow} src={imgThumb} />
-                <input type="file" id="new-image" name="new-image" onChange={fileUpload} />
-                <select>
-                    <option>Musica</option>
-                    <option>Entretenimiento</option>
-                    <option>Religion</option>
-                    <option>Politica</option>
-                    <option>Deportes</option>
-                    <option>Educacion</option>
+                <input type="file" id="new-image" name="new-image" onChange={fileShowPreview} />
+                <select onChange={(event) => setCat(event.target.selectedOptions)}>
+                    <option name="cat" selected={cat === "musica"} value="musica">Musica</option>
+                    <option name="cat" selected={cat === "entretenimiento"} value="entretenimiento">Entretenimiento</option>
+                    <option name="cat" selected={cat === "religion"} value="religion">Religion</option>
+                    <option name="cat" selected={cat === "politica"} value="politica">Politica</option>
+                    <option name="cat" selected={cat === "deportes"} value="deportes">Deportes</option>
+                    <option name="cat" selected={cat === "educacion"} value="educacion">Educacion</option>
                 </select>
-                <button>Crear Articulo</button>
+                <button onClick={handleSubmit}>Crear Articulo</button>
                 
             </form>
 
