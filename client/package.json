@@ -7,7 +7,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.4",
+    "dotenv": "^16.0.3",
     "moment": "^2.29.4",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
@@ -41,5 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "wiki-ideas-api.vercel.app/api/"
+  "proxy": "https://wiki-ideas-api.vercel.app/"
 }

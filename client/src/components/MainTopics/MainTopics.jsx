@@ -27,7 +27,7 @@ function MainTopic () {
         return doc.body.textContent;
     };
 
-    const mainTopicGenerate = posts.map((post) => {
+    const mainTopicGenerate = Array.isArray(posts) ? posts.map((post) => {
         return (
             <div className="principal-section" key={post.id}>
                     <img className="principal-img" src={post.img} alt="" />
@@ -39,7 +39,7 @@ function MainTopic () {
                     </div>
                 </div>
         );
-    });
+    }) : null;
 
     return (
         <section id="main-principal">
