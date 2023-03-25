@@ -4,6 +4,7 @@ import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
+import { MongoClient } from "mongodb";
 
 const app = express();
 
