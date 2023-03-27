@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../components/Registration/Registration.css";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Registration = () => {
 
@@ -67,27 +67,33 @@ const Registration = () => {
         e.preventDefault();
         try {
             await axios.post("/auth/register", inputs);
-            navigate("/login");
+            navigate("/auth/login");
         } catch (err) {
             setError(err.response.data);
         }
     }
 
+    const [show, setShow] = useState(false);
+    const handleShow = () => setShow(!show)
+
     return (
         <div className="register-container">
-            <h1 className="register-title">Registro</h1>
-            <form><label htmlFor="username">Usuario: </label>
-                <input type="text" name="username" onChange={handleChange} />
-                <label htmlFor="email">Email:</label>
-                <input type="email" name="email" onChange={handleChange} />
-                <label htmlFor="password">Password:</label>
-                <input type="password" name="password" onChange={handleChange} />
-                <div className="avatar-flex">
-                    { createAvatarOption }
+            <h1 className="register-title">Register</h1>
+            <form className="register-form">
+                <label htmlFor="username">Usuario: <span>*</span></label>
+                <input class="register-input" type="text" name="username" onChange={handleChange} required/>
+                <label htmlFor="email">Email: <span>*</span></label>
+                <input class="register-input" type="email" name="email" onChange={handleChange} required />
+                <label htmlFor="password">Password: <span>*</span></label>
+                <div className="show-password">
+                <input class="register-input-password" type={show ? "text" : "password"} name="password" onChange={handleChange} required />
+                <div className="show-hide" onClick={handleShow}>{show ? <AiFillEyeInvisible/> : <AiFillEye />}</div>
                 </div>
-                {err &&<p>{err}</p>}
-                <button onClick={handleSubmit}>Registrar</button>
-                <p>¿Tienes una cuenta? <Link className="link" to="/login">Login</Link></p>
+                <div className="avatar-flex">
+                </div>
+                {err &&<p className="error-form">{err}</p>}
+                <button className="btn-form" onClick={handleSubmit}>Sign Up</button>
+                <p className="question-form">Already have an account? <Link className="link" to="/auth/login">Login</Link></p>
             </form>
         </div>
     );

@@ -6,7 +6,23 @@ const password = 'ZNNGXIGiCocpCyTxLlnM';
 const dataBase = 'bupfk57bmupyaqmjhooh';
 const port = '3306';
 
-export const db = mysql.createConnection({
+/*export const db = mysql.createConnection({
+    host: "localhost",
+    user:"root",
+    password:"password",
+    database:"blog"
+});*/
+
+/*db.connect(function(err) {
+  if (err) {
+    return console.error('error: ' + err.message);
+  }
+
+  console.log('Connected to the MySQL server.');
+});*/
+
+export const db = mysql.createPool({
+  connectionLimit: 10,
   host: host,
   user: userName,
   password: password,
@@ -14,30 +30,13 @@ export const db = mysql.createConnection({
   port: port,
   ssl: {
     rejectUnauthorized: false
-  }
+  },
+  keepAlive: true
 });
 
-db.connect(function(err) {
-  if (err) {
-    return console.error('error: ' + err.message);
-  }
+db.getConnection((err, connection) => {
+  if(err) return console.error('error: ' + err.message);
 
   console.log('Connected to the MySQL server.');
+  connection.release();
 });
-
-
-
-/*export const db = mysql.createConnection({
-    host: "localhost",
-    user:"root",
-    password:"password",
-    database:"blog"
-});
-
-db.connect(function(err) {
-    if (err) {
-      return console.error('error: ' + err.message);
-    }
-  
-    console.log('Connected to the MySQL server.');
-  });*/

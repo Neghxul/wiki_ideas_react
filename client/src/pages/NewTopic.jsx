@@ -1,7 +1,5 @@
-import './newTopicStyles.css';
 import React from "react";
 import { useState, useRef } from "react";
-import ToolsMenu from "../components/ToolsMenu";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
@@ -56,6 +54,7 @@ function NewTopic() {
     const handleSubmit = async e => {
         e.preventDefault();
         const imgUrl = upload();
+        console.log(imgUrl);
 
         try {
 
@@ -67,32 +66,31 @@ function NewTopic() {
 
     return(
         <div className="new-topic" onClick={closeWindow}>
-        <div className="new-topic-content" onClick={handleContentClick}>
-            <h1>Crear un nuevo articulo</h1>
-            <form className="new-form">
-                <label htmlFor="new-name">Titulo</label>
-                <input type="text" id="new-name" name="new-name" ref={ref} onChange={(event) => setTitle(event.target.value)} value={title} />
-                <label>Descripcion del articulo</label>
-                <div className="editorcontainer">
-                    <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} />
-                </div>
-                <label htmlFor="new-author">Autor</label>
-                <input type="text" id="new-author" name="new-author" ref={ref} onChange={(event) => setAuthor(event.target.value)} value={author} />
-                <img id="new-image-preview" className={imgShow} src={imgThumb} />
-                <input type="file" id="new-image" name="new-image" onChange={fileShowPreview} />
-                <select onChange={(event) => setCat(event.target.selectedOptions)}>
-                    <option name="cat" selected={cat === "musica"} value="musica">Musica</option>
-                    <option name="cat" selected={cat === "entretenimiento"} value="entretenimiento">Entretenimiento</option>
-                    <option name="cat" selected={cat === "religion"} value="religion">Religion</option>
-                    <option name="cat" selected={cat === "politica"} value="politica">Politica</option>
-                    <option name="cat" selected={cat === "deportes"} value="deportes">Deportes</option>
-                    <option name="cat" selected={cat === "educacion"} value="educacion">Educacion</option>
-                </select>
-                <button onClick={handleSubmit}>Crear Articulo</button>
-                
-            </form>
+            <div className="new-topic-content" onClick={handleContentClick}>
+                <h1>Crear un nuevo articulo</h1>
+                <form className="new-form">
+                    <label htmlFor="new-name">Titulo</label>
+                    <input type="text" id="new-name" name="new-name" ref={ref} onChange={(event) => setTitle(event.target.value)} value={title} />
+                    <label>Descripcion del articulo</label>
+                    <div className="editorcontainer">
+                        <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} />
+                    </div>
+                    <label htmlFor="new-author">Autor</label>
+                    <input type="text" id="new-author" name="new-author" ref={ref} onChange={(event) => setAuthor(event.target.value)} value={author} />
+                    <img id="new-image-preview" className={imgShow} src={imgThumb} alt="" />
+                    <input type="file" id="new-image" name="new-image" onChange={fileShowPreview} />
+                    <select onChange={(event) => setCat(event.target.selectedOptions)}>
+                        <option name="cat" selected={cat === "musica"} value="musica">Musica</option>
+                        <option name="cat" selected={cat === "entretenimiento"} value="entretenimiento">Entretenimiento</option>
+                        <option name="cat" selected={cat === "religion"} value="religion">Religion</option>
+                        <option name="cat" selected={cat === "politica"} value="politica">Politica</option>
+                        <option name="cat" selected={cat === "deportes"} value="deportes">Deportes</option>
+                        <option name="cat" selected={cat === "educacion"} value="educacion">Educacion</option>
+                    </select>
+                    <button onClick={handleSubmit}>Crear Articulo</button>                
+                </form>
 
-        </div>
+            </div>
         <span className="close-button" onClick={closeWindow}>&times;</span>
     </div>
     );

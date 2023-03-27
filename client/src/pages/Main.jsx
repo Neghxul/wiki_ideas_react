@@ -1,13 +1,13 @@
 import React from "react";
-import Categories from "../components/Categories/Categories";
-import SearchBar from "../components/SearchBar/SearchBar";
-import MainTopic from "../components/MainTopics/MainTopics";
+import Categories from "../components/Categories";
+import Search from "../components/search";
+import MainTopic from "../components/MainTopics";
 
 function Main() {
 
     return (
         <main id="main">
-            <SearchBar />
+            <Search />
             <Categories />
             <MainTopic />
         </main>

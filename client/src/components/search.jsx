@@ -1,4 +1,3 @@
-import './searchBarStyles.css';
 import { React, useState, useRef } from "react";
 import { FaSearch } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -9,7 +8,7 @@ import logo from "../img/logo_empty.png";
 
 var dataSave = [];
 
-function SearchBar() {
+function Search() {
     const ref = useRef(null);
     const [searchValue, setSearchValue] = useState("");
     const detailsDiv = document.getElementById('details-search'); 
@@ -86,6 +85,7 @@ function SearchBar() {
                 snippet.innerHTML = result.snippet;
                 resultItem.appendChild(snippet);
                 resultsDiv.appendChild(resultItem);
+
         });
     }
     
@@ -118,7 +118,6 @@ function SearchBar() {
 
 
     // Function for save data in the DB
-
     const navigate = useNavigate();
     const state = useLocation().state;
     
@@ -150,42 +149,6 @@ function SearchBar() {
         }
     }
 
-
-    /*const state = useLocation().state;
-    const [value, setValue] = useState(state?.title || "");
-    const [title, setTitle] = useState(state?.desc || "");
-    const [file, setFile] = useState(null);
-    const [cat, setCat] = useState(state?.cat || "");
-
-    
-
-    
-
-    const handleClick = async (e) => {
-        e.preventDefault();
-        const imgUrl = await upload();
-
-        try {
-            state
-                ? await axios.put(`/posts/${state.id}`, {
-                title,
-                desc: value,
-                cat,
-                img: file ? imgUrl : "",
-            }) :
-            await axios.post(`/posts/`, {
-                title,
-                desc: value,
-                cat,
-                img: file ? imgUrl : "",
-                date: moment(Date.now()).format("YYY-MM-DD HH:mm:ss"),
-            });
-            navigate("/");
-        } catch (err) {
-            console.log(err);
-        }
-    };*/
-
     return (
         
         <section id="main-search">
@@ -195,22 +158,28 @@ function SearchBar() {
                     <input id="search-text" type="text" ref={ref} value={searchValue} onChange={(event) => setSearchValue(event.target.value)} />
                     <button id="search-btn" onClick={handleSubmit}><FaSearch className="react-icon" /></button>
                 </div>
-                
+                    
                 <div className="search-option">
                     <h5>¿Donde quieres realizar tu busqueda?</h5>
                     <span><input type="radio" name="search-option" id="search-wiki" checked />Wikipedia</span>
                     <span><input type="radio" name="search-option" id="search-db" />Wiki Ideas</span>
-                </div>
-                
+                </div>            
             </form>
             <div id="search-container">
-                <div id="search-img">
-                </div>
-                <div id="details-search">
-                
-                </div>
-                <button onClick={handleSavePost}>Guardar</button>
+                <div id="results-container">
+                    
+                    <div id="search-img">
+                    </div>
+                    <div className="details-search">
 
+                        <div id="details-search">
+
+                        </div>
+                        <div className="btn-save" onClick={handleSavePost}>
+                            Guardar Post
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );
@@ -218,4 +187,4 @@ function SearchBar() {
 }
 
 export { dataSave };
-export default SearchBar;
+export default Search;

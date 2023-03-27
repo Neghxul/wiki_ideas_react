@@ -3,8 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import { AuthContext } from "../components/context/authContext";
-import "./single.css";
-import { FaEdit, FaDelete } from "react-icons/fa";
+import { FaEdit} from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 
 
