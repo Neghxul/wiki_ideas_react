@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import Login from "./Login";
+import Login from "./login";
 import Registration from "./Registration";
 import logo from "../img/logo_empty.png";
 import { FaFacebook, FaInstagram, FaTwitter, FaGithub, FaWhatsapp }  from "react-icons/fa";

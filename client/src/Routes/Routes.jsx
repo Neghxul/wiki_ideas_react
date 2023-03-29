@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import Main from "../pages/Main";
 import Registration from "../pages/Registration";
-import Login from "../pages/Login";
+import Login from "../pages/login";
 import Single from "../pages/Single"
 import NewTopic from "../pages/NewTopic";
 import Root from "../components/Root/Root";
