@@ -4,7 +4,6 @@ import Main from "../pages/Main";
 import Registration from "../pages/Registration";
 import Login from "../pages/login";
 import Single from "../pages/Single"
-import NewTopic from "../pages/NewTopic";
 import Root from "../components/Root/Root";
 import Categories from "../components/Categories";
 import RootAuth from "../components/Root/RootAuth";

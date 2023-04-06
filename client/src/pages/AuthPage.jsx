@@ -10,14 +10,12 @@ function AuthPage () {
     const location = useLocation();
     let authComponent;
 
-    if (location.pathname === "/auth/login") {
+    if (location.pathname === "/auth/login" || location.pathname === "/auth") {
         authComponent = <Login />;
         
     } else if (location.pathname === "/auth/signup") {
         authComponent = <Registration />;
-    } else if (location.pathname === "/auth/") {
-        authComponent = <Login />;
-    }
+    } 
 
     return (
         <div className="main-auth">

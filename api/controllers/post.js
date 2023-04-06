@@ -81,7 +81,18 @@ export const updatePost = (req, res) => {
 
         db.query(q, [...values, postId, userInfo.id], (err, data) => {
             if (err) return res.status(500).json(err);
-            return res.json("Post has been update");
+            const keys = [
+                key.toString("hex"),
+                iv.toString("hex"),
+                data.insertId
+            ]
+            const qkeys = "INSERT INTO keystring(`keystr`, `ivstr`, `ckid`) VALUES (?)"
+
+            db.query(qkeys, [keys], (err, data) => {
+                if (err) return res.status(500).json(err);
+                return res.json("Card has been update");
+            })      
+            
         });
     });
 };

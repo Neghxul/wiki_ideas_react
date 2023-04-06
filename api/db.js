@@ -1,10 +1,7 @@
 import mysql from "mysql";
+import dotenv from "dotenv";
 
-const host = 'bupfk57bmupyaqmjhooh-mysql.services.clever-cloud.com';
-const userName = 'ueah659dxjkvdfsn';
-const password = 'ZNNGXIGiCocpCyTxLlnM';
-const dataBase = 'bupfk57bmupyaqmjhooh';
-const port = '3306';
+dotenv.config();
 
 /*export const db = mysql.createConnection({
     host: "localhost",
@@ -23,11 +20,11 @@ const port = '3306';
 
 export const db = mysql.createPool({
   connectionLimit: 10,
-  host: host,
-  user: userName,
-  password: password,
-  database: dataBase,
-  port: port,
+  host: process.env.DBHOST,
+  user: process.env.DBUSERNAME,
+  password: process.env.DBPASSWORD,
+  database: process.env.DBDATABASE,
+  port: process.env.DBPORT,
   ssl: {
     rejectUnauthorized: false
   },
